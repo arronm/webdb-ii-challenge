@@ -8,12 +8,6 @@ const server = express();
 server.use(express.json());
 server.use(helmet());
 
-const errorRef = (error) => {
-  const hash = Math.random().toString(36).substring(2);
-  console.log(error);
-  return { message: `Unknown Server Error, Reference: ${hash}`}
-}
-
 // endpoints here
 server.use('/api/zoos', ZooRouter);
 server.use('/api/bears', BearRouter);

@@ -5,6 +5,12 @@ router.use(express.json());
 const Bears = require('../data/bear-models');
 const validateBody = require ('./middleware/validateBody');
 
+const errorRef = (error) => {
+  const hash = Math.random().toString(36).substring(2);
+  console.log(error);
+  return { message: `Unknown Server Error, Reference: ${hash}`}
+}
+
 router.get('/', async (req, res) => {
   try {
     const data = await Bears.get();
